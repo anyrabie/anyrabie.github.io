@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Portfolio</title>
+    <title>Rabie Oudghiri - Portfolio</title>
+    <link rel="icon" type="image/jpeg" href="favicon.jpeg">
     <style>
         * {
             margin: 0;
@@ -15,147 +16,429 @@
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             line-height: 1.6;
             color: #333;
+            background: #f5f5f5;
         }
 
         header {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
             text-align: center;
-            padding: 100px 20px;
+            padding: 120px 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"><path d="M0,0 Q300,60 600,30 T1200,0 L1200,120 L0,120 Z" fill="rgba(255,255,255,0.1)"/></svg>') bottom center/cover no-repeat;
+            opacity: 0.3;
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
+            animation: fadeInDown 1s ease;
         }
 
         header p {
-            font-size: 1.2em;
-            opacity: 0.9;
+            font-size: 1.4em;
+            opacity: 0.95;
+            position: relative;
+            z-index: 1;
+            animation: fadeInUp 1s ease;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         nav {
-            background: #333;
+            background: rgba(51, 51, 51, 0.95);
             padding: 15px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
         }
 
         nav a {
             color: white;
             text-decoration: none;
-            margin: 0 20px;
-            font-weight: 500;
+            margin: 0 25px;
+            font-weight: 600;
+            font-size: 1.05em;
+            transition: all 0.3s ease;
+            display: inline-block;
         }
 
         nav a:hover {
             color: #667eea;
+            transform: translateY(-2px);
         }
 
         section {
-            max-width: 1000px;
-            margin: 60px auto;
-            padding: 0 20px;
+            max-width: 1100px;
+            margin: 80px auto;
+            padding: 0 30px;
         }
 
         h2 {
-            font-size: 2.5em;
-            margin-bottom: 30px;
+            font-size: 2.8em;
+            margin-bottom: 20px;
             color: #667eea;
             text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 2px;
         }
 
         .about-content {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 40px;
+            font-size: 1.15em;
+            line-height: 1.8;
             text-align: center;
-            font-size: 1.1em;
-            max-width: 700px;
-            margin: 0 auto;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
         }
 
         .projects-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
         }
 
         .project-card {
             background: white;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            border-left: 4px solid #667eea;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05) 0%, rgba(118, 75, 162, 0.05) 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .project-card:hover::before {
+            opacity: 1;
         }
 
         .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
         }
 
         .project-card h3 {
             color: #667eea;
-            margin-bottom: 15px;
+            margin-bottom: 18px;
+            font-size: 1.5em;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-card p {
+            color: #555;
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            margin-bottom: 20px;
+        }
+
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .project-link {
+            display: inline-block;
+            padding: 8px 18px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .skill-category {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: translateY(-5px);
+        }
+
+        .skill-category h3 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            border-bottom: 2px solid #f0f0f0;
+            padding-bottom: 10px;
+        }
+
+        .skill-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 15px;
-            justify-content: center;
-            margin-top: 40px;
+            gap: 10px;
+            margin-top: 15px;
         }
 
         .skill {
-            background: #667eea;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            padding: 10px 20px;
-            border-radius: 25px;
+            padding: 8px 16px;
+            border-radius: 20px;
             font-weight: 500;
+            font-size: 0.95em;
+            transition: transform 0.2s ease;
+        }
+
+        .skill:hover {
+            transform: scale(1.05);
+        }
+
+        .certifications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-top: 50px;
+        }
+
+        .cert-card {
+            background: white;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            transition: all 0.4s ease;
+            text-align: center;
+            border-top: 4px solid #667eea;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 30px rgba(102, 126, 234, 0.2);
+        }
+
+        .cert-icon {
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+
+        .cert-card h3 {
+            color: #667eea;
+            margin-bottom: 10px;
+            font-size: 1.4em;
+        }
+
+        .cert-issuer {
+            color: #764ba2;
+            font-weight: 600;
+            margin-bottom: 15px;
+            font-size: 1.05em;
+        }
+
+        .cert-description {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+
+        .cert-year {
+            color: #888;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+        }
+
+        .cert-link {
+            display: inline-block;
+            padding: 10px 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cert-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
         }
 
         .contact-info {
+            background: white;
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+            margin-top: 40px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .contact-item {
             text-align: center;
+            padding: 20px;
+            border-radius: 10px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: #f8f9ff;
+        }
+
+        .contact-item strong {
+            display: block;
+            color: #667eea;
+            margin-bottom: 10px;
             font-size: 1.1em;
         }
 
         .contact-info a {
-            color: #667eea;
+            color: #555;
             text-decoration: none;
             font-weight: 500;
+            transition: color 0.3s ease;
         }
 
         .contact-info a:hover {
-            text-decoration: underline;
+            color: #667eea;
         }
 
         footer {
             background: #333;
             color: white;
             text-align: center;
-            padding: 30px;
-            margin-top: 60px;
+            padding: 40px;
+            margin-top: 80px;
+        }
+
+        footer p {
+            opacity: 0.9;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5em;
+            }
+
+            header p {
+                font-size: 1.1em;
+            }
+
+            nav a {
+                margin: 0 10px;
+                font-size: 0.95em;
+            }
+
+            h2 {
+                font-size: 2.2em;
+            }
+
+            .projects-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <header>
         <h1>Rabie Oudghiri</h1>
-        <p>Développeur Web | Designer | Créatif</p>
+        <p>Data Scientist | Développeur IA | Ingénieur Passionné</p>
     </header>
 
     <nav>
         <a href="#about">À propos</a>
         <a href="#projects">Projets</a>
         <a href="#skills">Compétences</a>
+        <a href="#certifications">Certifications</a>
         <a href="#contact">Contact</a>
     </nav>
 
     <section id="about">
         <h2>À propos</h2>
         <div class="about-content">
-            <p>Bonjour ! Je suis [Votre Nom], passionné(e) par le développement web et la création de solutions innovantes. Je travaille sur des projets variés qui allient créativité et technologie.</p>
+            <p>Bonjour ! Je suis Rabie Oudghiri, étudiant en 4ème année d'ingénierie en Intelligence Artificielle à l'Université Abou Bakr Belkaid de Tlemcen. Passionné par l'analyse de données et le Machine Learning, je transforme les données brutes en insights stratégiques pour optimiser la prise de décision. Mon objectif est de développer des solutions prédictives à fort impact business qui résolvent des problèmes réels.</p>
         </div>
     </section>
 
@@ -163,16 +446,28 @@
         <h2>Mes Projets</h2>
         <div class="projects-grid">
             <div class="project-card">
-                <h3>Projet 1</h3>
-                <p>Description de votre premier projet. Expliquez ce que vous avez créé et les technologies utilisées.</p>
+                <!-- GitHub: https://github.com/anyrabie/numerical_methods_project_rabie -->
+                <!-- Documentation: https://numerical-methods-project-rabie.readthedocs.io/en/latest/ -->
+                <!-- PyPI Library: https://libraries.io/pypi/numerical-methods-rabie -->
+                <h3>Package Python - Méthodes Numériques</h3>
+                <p>Développement d'un package Python prêt à l'emploi destiné aux étudiants, chercheurs et ingénieurs. Ce package couvre différents types de problèmes numériques complexes difficiles à résoudre avec des méthodes mathématiques classiques : résolution de systèmes linéaires, interpolation polynomiale, intégration numérique, et plus encore. Prochaine étape : implémentation de méthodes numériques pour la résolution d'équations différentielles.</p>
+                <div class="project-links">
+                    <a href="https://github.com/anyrabie/numerical_methods_project_rabie" target="_blank" class="project-link">📦 GitHub</a>
+                    <a href="https://numerical-methods-project-rabie.readthedocs.io/en/latest/" target="_blank" class="project-link">📖 Documentation</a>
+                    <a href="https://libraries.io/pypi/numerical-methods-rabie" target="_blank" class="project-link">🔧 PyPI Library</a>
+                </div>
             </div>
             <div class="project-card">
-                <h3>Projet 2</h3>
-                <p>Description de votre deuxième projet. Parlez des défis relevés et des solutions apportées.</p>
+                <h3>Application Mobile GreenServe</h3>
+                <p>Conception et développement d'une application mobile collaborative pour les bénévoles en coordination avec des collègues. GreenServe offre un espace digital complet pour organiser des actions bénévoles dans la ville, avec planification d'événements, notifications automatiques et coordination entre participants. Perspective future : intégration avec les associations locales et les hôpitaux pour créer une communauté bénévole plus large et impactante.</p>
             </div>
             <div class="project-card">
-                <h3>Projet 3</h3>
-                <p>Description de votre troisième projet. Mettez en avant vos réalisations et résultats.</p>
+                <!-- GitHub: https://github.com/anyrabie/assistant-bi-streamlit -->
+                <h3>Assistant IA pour la Business Intelligence</h3>
+                <p>Mise en place d'un chatbot local intelligent pour l'analyse BI sur des données brutes. Ce projet couvre les différentes étapes d'un système décisionnel moderne : extraction, transformation et chargement des données (ETL), analyse automatisée et génération d'insights. Développé en collaboration avec une équipe de collègues, cet assistant facilite la prise de décision basée sur les données.</p>
+                <div class="project-links">
+                    <a href="https://github.com/anyrabie/assistant-bi-streamlit" target="_blank" class="project-link">📦 GitHub</a>
+                </div>
             </div>
         </div>
     </section>
@@ -180,26 +475,117 @@
     <section id="skills">
         <h2>Compétences</h2>
         <div class="skills-container">
-            <span class="skill">HTML/CSS</span>
-            <span class="skill">JavaScript</span>
-            <span class="skill">React</span>
-            <span class="skill">Node.js</span>
-            <span class="skill">Python</span>
-            <span class="skill">Git</span>
+            <div class="skill-category">
+                <h3>Langages de Programmation</h3>
+                <div class="skill-tags">
+                    <span class="skill">Python (Avancé)</span>
+                    <span class="skill">SQL (Avancé)</span>
+                    <span class="skill">Java (Avancé)</span>
+                    <span class="skill">JavaScript</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Data Science & IA</h3>
+                <div class="skill-tags">
+                    <span class="skill">Pandas</span>
+                    <span class="skill">NumPy</span>
+                    <span class="skill">Scikit-learn</span>
+                    <span class="skill">Machine Learning</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Visualisation & BI</h3>
+                <div class="skill-tags">
+                    <span class="skill">Matplotlib</span>
+                    <span class="skill">Seaborn</span>
+                    <span class="skill">Power BI</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Bases de Données</h3>
+                <div class="skill-tags">
+                    <span class="skill">MySQL</span>
+                    <span class="skill">Oracle 11g</span>
+                    <span class="skill">Firebase</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Développement</h3>
+                <div class="skill-tags">
+                    <span class="skill">HTML/CSS</span>
+                    <span class="skill">React</span>
+                    <span class="skill">Flutter</span>
+                    <span class="skill">Git/GitHub</span>
+                </div>
+            </div>
+
+            <div class="skill-category">
+                <h3>Gestion de Projet</h3>
+                <div class="skill-tags">
+                    <span class="skill">Jira</span>
+                    <span class="skill">Agile/Scrum</span>
+                    <span class="skill">Figma</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="certifications">
+        <h2>Certifications</h2>
+        <div class="certifications-grid">
+            <div class="cert-card">
+                <div class="cert-icon">🎓</div>
+                <h3>IBM AI Fundamentals</h3>
+                <p class="cert-issuer">IBM via SkillsBuild</p>
+                <p class="cert-description">Introduction à l'Intelligence Artificielle, Machine Learning et applications pratiques</p>
+                <p class="cert-year">2025</p>
+                <a href="https://www.credly.com/badges/8a9a9a8a-88a0-4f03-a449-a426708a9e28" class="cert-link">Voir le certificat</a>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">📊</div>
+                <h3>Business Intelligence Fundamentals</h3>
+                <p class="cert-issuer">SkillUp by Simplilearn</p>
+                <p class="cert-description">Fondamentaux de la Business Intelligence et analyse de données</p>
+                <p class="cert-year">2025</p>
+                <a href="https://www.simplilearn.com/skillup-certificate-landing?token=eyJjb3Vyc2VfaWQiOiIxODA2IiwiY2VydGlmaWNhdGVfdXJsIjoiaHR0cHM6XC9cL2NlcnRpZmljYXRlcy5zaW1wbGljZG4ubmV0XC9zaGFyZVwvODc4OTA5Ml85MTUxOTI2MTc1NTIzNjM0MzI1Ny5wbmciLCJ1c2VybmFtZSI6IlJhYmllIE91ZGdoaXJpIn0%3D&utm_source=shared-certificate&utm_medium=lms&utm_campaign=shared-certificate-promotion&referrer=https%3A%2F%2Flms.simplilearn.com%2Fcourses%2F4304%2FBusiness%2520Intelligence%2520Fundamentals%2Fcertificate%2Fdownload-skillup&%24web_only=true&_branch_match_id=1524525413287933207&_branch_referrer=H4sIAAAAAAAAA8soKSkottLXL87MLcjJ1EssKNDLyczL1k%2FVj8pJKcnPDyk1jEiyrytKTUstKsrMS49PKsovL04tsnVNSU8FABmgyPg9AAAA" class="cert-link">Voir le certificat</a>
+            </div>
+            <div class="cert-card">
+                <div class="cert-icon">🤖</div>
+                <h3>Supervised Learning with scikit-learn</h3>
+                <p class="cert-issuer">DataCamp</p>
+                <p class="cert-description">Apprentissage supervisé et algorithmes de Machine Learning</p>
+                <p class="cert-year">2025</p>
+                <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/117135bd716e8f02d48d40f9b99ed2d97c419fdd?utm_medium=organic_social&utm_campaign=sharewidget&utm_content=soa&utm_source=copylink" class="cert-link">Voir le certificat</a>
+            </div>
         </div>
     </section>
 
     <section id="contact">
         <h2>Contact</h2>
         <div class="contact-info">
-            <p>Email : <a href="mailto:votre.email@exemple.com">votre.email@exemple.com</a></p>
-            <p>GitHub : <a href="https://github.com/votre-username" target="_blank">@votre-username</a></p>
-            <p>LinkedIn : <a href="https://linkedin.com/in/votre-profil" target="_blank">Votre Profil</a></p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <strong>Email</strong>
+                    <a href="mailto:rabie.oudghri@univ-tlemcen.dz">rabie.oudghri@univ-tlemcen.dz</a>
+                </div>
+                <div class="contact-item">
+                    <strong>LinkedIn</strong>
+                    <a href="https://linkedin.com/in/rabie-oudghiri-a624b8284" target="_blank">Rabie Oudghiri</a>
+                </div>
+                <div class="contact-item">
+                    <strong>GitHub</strong>
+                    <a href="https://github.com/anyrabie" target="_blank">@anyrabie</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <footer>
-        <p>&copy; 2024 Votre Nom. Tous droits réservés.</p>
+        <p>&copy; 2024 Rabie Oudghiri. Tous droits réservés.</p>
     </footer>
 </body>
 </html>
